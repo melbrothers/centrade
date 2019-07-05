@@ -1,8 +1,8 @@
 <template>
-  <v-form @submit.prevent="login">
+  <v-form @submit.prevent="register">
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
-        <v-toolbar-title>Login form</v-toolbar-title>
+        <v-toolbar-title>Register Form</v-toolbar-title>
         <v-spacer />
       </v-toolbar>
       <v-card-text>
@@ -23,7 +23,7 @@
       <v-card-actions>
         <v-spacer />
         <v-btn color="primary" type="submit">
-          Login
+          Register
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -39,8 +39,13 @@ export default {
     }
   },
   methods: {
-    async login() {
+    async register() {
       try {
+        await this.$axios.post('register', {
+          email: this.email,
+          password: this.password
+        })
+
         await this.$auth.loginWith('local', {
           data: {
             email: this.email,
