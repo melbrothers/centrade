@@ -46,7 +46,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'vuetify-dialog/nuxt'
   ],
   /*
    ** Axios module configuration
@@ -59,8 +60,8 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'data.token' },
-          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' },
+          login: { url: 'login', method: 'post', propertyName: 'access_token' },
+          user: { url: 'auth/user', method: 'get', propertyName: 'data' },
           logout: false
         }
       }

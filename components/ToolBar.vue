@@ -67,6 +67,9 @@ export default {
       appName: 'Centrade',
       drawer: false
     }
+  },
+  methods: {
+    showLogin() {}
   }
   //   computed: mapGetters({
   //     user: 'authUser',

@@ -18,7 +18,8 @@
     "@nuxtjs/auth": "^4.8.1",
     "@nuxtjs/axios": "^5.5.4",
     "@nuxtjs/vuetify": "0.5.5",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vuetify-dialog": "^0.3.6"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

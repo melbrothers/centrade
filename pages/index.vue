@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ToolBar :drawer="drawer" @toggleDrawer="drawer = !drawer" />
     <main>
+      <ToolBar :drawer="drawer" @toggleDrawer="drawer = !drawer" />
       <v-content>
         <v-container fluid class="pa-0">
           <v-layout row justify-center>
