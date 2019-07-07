@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="register">
+  <form @submit.prevent="register">
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
         <v-toolbar-title>Register Form</v-toolbar-title>
@@ -8,16 +8,31 @@
       <v-card-text>
         <v-text-field
           v-model="email"
+          v-validate="'required|email'"
           prepend-icon="email"
           label="Email"
+          data-vv-name="email"
           type="text"
+          autofocus
+          :error-messages="errors.collect('email')"
         />
         <v-text-field
-          id="password"
           v-model="password"
+          v-validate="'required'"
           prepend-icon="lock"
           label="Password"
           type="password"
+          data-vv-name="password"
+          :error-messages="errors.collect('password')"
+        />
+        <v-text-field
+          v-model="passwordConfirmation"
+          v-validate="'required'"
+          prepend-icon="lock"
+          label="Confrim Password"
+          type="password"
+          data-vv-name="password_confirmation"
+          :error-messages="errors.collect('password_confirmation')"
         />
       </v-card-text>
       <v-card-actions>
@@ -27,25 +42,29 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-  </v-form>
+  </form>
 </template>
 <script>
 export default {
   data() {
     return {
-      email: 'zlxjackie@hotmail.com',
+      email: '',
       password: 'secretsecret',
-      error: null
+      passwordConfirmation: 'secretsecret'
     }
   },
   methods: {
     async register() {
       try {
+        const result = await this.$validator.validate()
+        if (!result) {
+          return
+        }
         await this.$axios.post('register', {
           email: this.email,
-          password: this.password
+          password: this.password,
+          password_confirmation: this.passwordConfirmation
         })
-
         await this.$auth.loginWith('local', {
           data: {
             email: this.email,
@@ -55,7 +74,7 @@ export default {
 
         this.$router.push('/')
       } catch (e) {
-        this.error = e.response.data.message
+        this.$setLaravelValidationErrorsFromResponse(e.response.data)
       }
     }
   }

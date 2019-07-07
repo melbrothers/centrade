@@ -45,8 +45,8 @@
 
     <!-- Guest -->
     <template v-else>
-      <v-btn flat to="/about">
-        {{ 'About' }}
+      <v-btn flat to="/register">
+        {{ 'Register' }}
       </v-btn>
       <v-btn flat to="/login">
         {{ 'login' }}
