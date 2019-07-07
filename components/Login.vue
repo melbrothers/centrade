@@ -1,5 +1,5 @@
 <template>
-  <v-form @submit.prevent="login">
+  <form @submit.prevent="login">
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
         <v-toolbar-title>Login form</v-toolbar-title>
@@ -8,16 +8,23 @@
       <v-card-text>
         <v-text-field
           v-model="email"
+          v-validate="'required|email'"
           prepend-icon="email"
           label="Email"
           type="text"
+          data-vv-name="email"
+          autofocus
+          :error-messages="errors.collect('email')"
         />
         <v-text-field
           id="password"
           v-model="password"
+          v-validate="'required'"
           prepend-icon="lock"
           label="Password"
           type="password"
+          data-vv-name="password"
+          :error-messages="errors.collect('password')"
         />
       </v-card-text>
       <v-card-actions>
@@ -27,20 +34,24 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-  </v-form>
+  </form>
 </template>
 <script>
 export default {
   data() {
     return {
       email: 'zlxjackie@hotmail.com',
-      password: 'secretsecret',
-      error: null
+      password: 'secretsecret'
     }
   },
   methods: {
     async login() {
       try {
+        const result = await this.$validator.validate()
+        if (!result) {
+          return
+        }
+
         await this.$auth.loginWith('local', {
           data: {
             email: this.email,
@@ -50,7 +61,7 @@ export default {
 
         this.$router.push('/')
       } catch (e) {
-        this.error = e.response.data.message
+        this.$setLaravelValidationErrorsFromResponse(e.response.data)
       }
     }
   }
