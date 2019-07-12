@@ -55,6 +55,7 @@ export default {
    */
   axios: {
     baseURL: 'http://ecquotes.test/api'
+    // baseURL: 'http://ecquotes.herokuapp.com/api'
   },
   auth: {
     strategies: {

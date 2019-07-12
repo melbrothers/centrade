@@ -87,7 +87,7 @@ export default {
     accountMenuItemClicked(action) {
       switch (action) {
         case 'profile':
-          this.$router.push({ name: 'settings.profile' })
+          this.$router.push({ name: 'account-profile' })
           break
         case 'logout':
           this.logout()
