@@ -21,12 +21,38 @@
                   Some info may be visible to other people using centrade
                   service.
                 </h2>
-                <v-select :items="titles" label="Title" />
-                <v-text-field label="First Name" />
-                <v-text-field label="Last Name" />
-                <v-select :items="states" label="Gender" />
+                <v-select
+                  v-model="profile.title"
+                  v-validate="'required'"
+                  data-vv-name="title"
+                  :error-messages="errors.collect('title')"
+                  :items="titles"
+                  label="Title"
+                />
+                <v-text-field
+                  v-model="profile.firstName"
+                  v-validate="'required'"
+                  label="First Name"
+                  data-vv-name="firstName"
+                  :error-messages="errors.collect('firstName')"
+                />
+                <v-text-field
+                  v-model="profile.lastName"
+                  v-validate="'required'"
+                  label="Last Name"
+                  data-vv-name="lastName"
+                  :error-messages="errors.collect('lastName')"
+                />
+                <v-select
+                  v-model="profile.gender"
+                  v-validate="'required'"
+                  :items="genders"
+                  label="Gender"
+                  data-vv-name="gender"
+                  :error-messages="errors.collect('gender')"
+                />
                 <v-menu
-                  v-model="menu2"
+                  v-model="menu"
                   :close-on-content-click="false"
                   :nudge-right="40"
                   lazy
@@ -37,17 +63,17 @@
                 >
                   <template v-slot:activator="{ on }">
                     <v-text-field
-                      v-model="date"
-                      label="Picker without buttons"
+                      v-model="profile.dob"
+                      label="Date of Birth"
                       prepend-icon="event"
                       readonly
                       v-on="on"
                     />
                   </template>
                   <v-date-picker
-                    v-model="date"
+                    v-model="profile.dob"
                     no-title
-                    @input="menu2 = false"
+                    @input="menu = false"
                   />
                 </v-menu>
               </section>
@@ -55,32 +81,87 @@
                 <h1 class="title my-2">
                   Contact info
                 </h1>
-                <v-text-field label="Mobile Phone" />
-                <v-text-field label="Landline" />
+                <v-text-field
+                  v-model="profile.mobile"
+                  v-validate="'required'"
+                  data-vv-name="mobile"
+                  :error-messages="errors.collect('mobile')"
+                  label="Mobile Phone"
+                />
+                <v-text-field
+                  v-model="profile.landline"
+                  v-validate="'required'"
+                  data-vv-name="landline"
+                  :error-messages="errors.collect('landline')"
+                  label="Landline"
+                />
               </section>
               <section class="profile-section">
                 <h1 class="title my-2">
                   Business info
                 </h1>
-                <v-text-field label="ABN" />
-                <v-text-field label="License" />
+                <v-text-field
+                  v-model="profile.abn"
+                  v-validate="'required'"
+                  data-vv-name="abn"
+                  :error-messages="errors.collect('abn')"
+                  label="ABN"
+                />
+                <v-text-field
+                  v-model="profile.licence"
+                  v-validate="'required'"
+                  data-vv-name="licence"
+                  :error-messages="errors.collect('licence')"
+                  label="Licence"
+                />
               </section>
 
               <section class="profile-section">
                 <h1 class="title my-2">
                   Address
                 </h1>
-                <v-text-field label="Address 1" />
-                <v-text-field label="Address 2" />
-                <v-text-field label="Suburb" />
-                <v-select :items="states" label="State" />
-                <v-text-field label="Postcode" />
+                <v-text-field
+                  v-model="profile.address1"
+                  v-validate="'required'"
+                  data-vv-name="address1"
+                  :error-messages="errors.collect('address1')"
+                  label="Address 1"
+                />
+                <v-text-field
+                  v-model="profile.address2"
+                  v-validate="'required'"
+                  data-vv-name="address2"
+                  :error-messages="errors.collect('address2')"
+                  label="Address 2"
+                />
+                <v-text-field
+                  v-model="profile.suburb"
+                  v-validate="'required'"
+                  data-vv-name="suburb"
+                  :error-messages="errors.collect('suburb')"
+                  label="Suburb"
+                />
+                <v-select
+                  v-model="profile.state"
+                  v-validate="'required'"
+                  :items="states"
+                  data-vv-name="state"
+                  :error-messages="errors.collect('state')"
+                  label="State"
+                />
+                <v-text-field
+                  v-model="profile.postcode"
+                  v-validate="'required'"
+                  data-vv-name="postcode"
+                  :error-messages="errors.collect('postcode')"
+                  label="Postcode"
+                />
               </section>
             </v-flex>
           </v-layout>
           <v-layout column>
             <v-flex xs6 align-self-center>
-              <v-btn class="save-btn mx-2" color="primary">
+              <v-btn class="save-btn mx-2" color="primary" type="submit">
                 Save
               </v-btn>
             </v-flex>
@@ -95,25 +176,38 @@ export default {
   data() {
     return {
       profile: {
+        title: '',
         firstName: '',
         lastName: '',
         address1: '',
         address2: '',
         suburb: '',
-        postcode: ''
+        state: '',
+        postcode: '',
+        gender: '',
+        landline: '',
+        dob: new Date().toISOString().substr(0, 10),
+        abn: ''
       },
       titles: ['Mr', 'Mrs', 'Ms'],
       states: ['NSW', 'ACT', 'VIC', 'SA', 'NT', 'TAS'],
-      date: new Date().toISOString().substr(0, 10),
       modal: false,
-      menu2: false,
+      menu: false,
       genders: ['Male', 'Female']
     }
   },
   methods: {
     async updateProfile() {
       try {
-      } catch (e) {}
+        const result = await this.$validator.validate()
+        if (!result) {
+          return
+        }
+
+        await this.$axios.post('/user/profile', this.profile)
+      } catch (e) {
+        this.$setLaravelValidationErrorsFromResponse(e.response.data)
+      }
     }
   }
 }
