@@ -31,14 +31,14 @@
                 />
                 <v-text-field
                   v-model="profile.firstName"
-                  v-validate="'required'"
+                  v-validate="'required|alpha'"
                   label="First Name"
                   data-vv-name="firstName"
                   :error-messages="errors.collect('firstName')"
                 />
                 <v-text-field
                   v-model="profile.lastName"
-                  v-validate="'required'"
+                  v-validate="'required|alpha'"
                   label="Last Name"
                   data-vv-name="lastName"
                   :error-messages="errors.collect('lastName')"
@@ -102,14 +102,14 @@
                 </h1>
                 <v-text-field
                   v-model="profile.abn"
-                  v-validate="'required'"
+                  v-validate="'required|numeric'"
                   data-vv-name="abn"
                   :error-messages="errors.collect('abn')"
                   label="ABN"
                 />
                 <v-text-field
                   v-model="profile.licence"
-                  v-validate="'required'"
+                  v-validate="'numeric'"
                   data-vv-name="licence"
                   :error-messages="errors.collect('licence')"
                   label="Licence"
@@ -129,7 +129,7 @@
                 />
                 <v-text-field
                   v-model="profile.address2"
-                  v-validate="'required'"
+                  v-validate="'alpha_dash'"
                   data-vv-name="address2"
                   :error-messages="errors.collect('address2')"
                   label="Address 2"
@@ -175,26 +175,17 @@
 export default {
   data() {
     return {
-      profile: {
-        title: '',
-        firstName: '',
-        lastName: '',
-        address1: '',
-        address2: '',
-        suburb: '',
-        state: '',
-        postcode: '',
-        gender: '',
-        landline: '',
-        dob: new Date().toISOString().substr(0, 10),
-        abn: ''
-      },
       titles: ['Mr', 'Mrs', 'Ms'],
       states: ['NSW', 'ACT', 'VIC', 'SA', 'NT', 'TAS'],
       modal: false,
       menu: false,
       genders: ['Male', 'Female']
     }
+  },
+  async asyncData({ app }) {
+    const { data } = await app.$axios.get('user/profile')
+    console.log(data.data)
+    return { profile: data.data }
   },
   methods: {
     async updateProfile() {
@@ -205,6 +196,10 @@ export default {
         }
 
         await this.$axios.post('/user/profile', this.profile)
+
+        this.$dialog.message.success('Profile Updated', {
+          position: 'top-right'
+        })
       } catch (e) {
         this.$setLaravelValidationErrorsFromResponse(e.response.data)
       }
