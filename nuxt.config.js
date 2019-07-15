@@ -54,7 +54,8 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://ecquotes.test/api'
+    baseURL: process.env.BASE_URL || 'http://ecquotes.test/api'
+    // baseURL: 'http://ecquotes.herokuapp.com/api'
   },
   auth: {
     strategies: {
