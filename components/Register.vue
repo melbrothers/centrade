@@ -7,6 +7,26 @@
       </v-toolbar>
       <v-card-text>
         <v-text-field
+          v-model="abn"
+          v-validate="'required|numeric'"
+          prepend-icon="business"
+          label="ABN"
+          data-vv-name="abn"
+          type="text"
+          autofocus
+          :error-messages="errors.collect('abn')"
+        />
+        <v-text-field
+          v-model="businessName"
+          v-validate="'required'"
+          prepend-icon="contact_mail"
+          label="Business Name"
+          data-vv-name="businessName"
+          type="text"
+          autofocus
+          :error-messages="errors.collect('businessName')"
+        />
+        <v-text-field
           v-model="email"
           v-validate="'required|email'"
           prepend-icon="email"
@@ -48,6 +68,8 @@
 export default {
   data() {
     return {
+      abn: '',
+      businessName: '',
       email: '',
       password: 'secretsecret',
       passwordConfirmation: 'secretsecret'
@@ -61,6 +83,8 @@ export default {
           return
         }
         await this.$axios.post('register', {
+          abn: this.abn,
+          businessName: this.businessName,
           email: this.email,
           password: this.password,
           password_confirmation: this.passwordConfirmation
@@ -72,7 +96,7 @@ export default {
           }
         })
 
-        this.$router.push('/')
+        this.$router.push('/account/profile')
       } catch (e) {
         this.$setLaravelValidationErrorsFromResponse(e.response.data)
       }

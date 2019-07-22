@@ -101,14 +101,14 @@
                   Business info
                 </h1>
                 <v-text-field
-                  v-model="profile.abn"
+                  v-model="profile.legal_entity.abn"
                   v-validate="'required|numeric'"
                   data-vv-name="abn"
                   :error-messages="errors.collect('abn')"
                   label="ABN"
                 />
                 <v-text-field
-                  v-model="profile.licence"
+                  v-model="profile.legal_entity.licence"
                   v-validate="'numeric'"
                   data-vv-name="licence"
                   :error-messages="errors.collect('licence')"
@@ -121,28 +121,28 @@
                   Address
                 </h1>
                 <v-text-field
-                  v-model="profile.address1"
+                  v-model="profile.legal_entity.address1"
                   v-validate="'required'"
                   data-vv-name="address1"
                   :error-messages="errors.collect('address1')"
                   label="Address 1"
                 />
                 <v-text-field
-                  v-model="profile.address2"
+                  v-model="profile.legal_entity.address2"
                   v-validate="'alpha_dash'"
                   data-vv-name="address2"
                   :error-messages="errors.collect('address2')"
                   label="Address 2"
                 />
                 <v-text-field
-                  v-model="profile.suburb"
+                  v-model="profile.legal_entity.suburb"
                   v-validate="'required'"
                   data-vv-name="suburb"
                   :error-messages="errors.collect('suburb')"
                   label="Suburb"
                 />
                 <v-select
-                  v-model="profile.state"
+                  v-model="profile.legal_entity.state"
                   v-validate="'required'"
                   :items="states"
                   data-vv-name="state"
@@ -150,7 +150,7 @@
                   label="State"
                 />
                 <v-text-field
-                  v-model="profile.postcode"
+                  v-model="profile.legal_entity.postcode"
                   v-validate="'required'"
                   data-vv-name="postcode"
                   :error-messages="errors.collect('postcode')"

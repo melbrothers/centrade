@@ -59,7 +59,7 @@ export default {
           }
         })
 
-        this.$router.push('/')
+        this.$router.push('/account/profile')
       } catch (e) {
         this.$setLaravelValidationErrorsFromResponse(e.response.data)
       }
