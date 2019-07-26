@@ -121,18 +121,18 @@
                   Address
                 </h1>
                 <v-text-field
-                  v-model="profile.legal_entity.address1"
+                  v-model="profile.legal_entity.address_line_1"
                   v-validate="'required'"
-                  data-vv-name="address1"
-                  :error-messages="errors.collect('address1')"
-                  label="Address 1"
+                  data-vv-name="address_line_1"
+                  :error-messages="errors.collect('address_line_1')"
+                  label="Address"
                 />
                 <v-text-field
-                  v-model="profile.legal_entity.address2"
+                  v-model="profile.legal_entity.address_line_2"
                   v-validate="'alpha_dash'"
-                  data-vv-name="address2"
-                  :error-messages="errors.collect('address2')"
-                  label="Address 2"
+                  data-vv-name="address_line_2"
+                  :error-messages="errors.collect('address_line_2')"
+                  label="Address line 2"
                 />
                 <v-text-field
                   v-model="profile.legal_entity.suburb"
@@ -150,11 +150,11 @@
                   label="State"
                 />
                 <v-text-field
-                  v-model="profile.legal_entity.postcode"
+                  v-model="profile.legal_entity.postal_code"
                   v-validate="'required'"
-                  data-vv-name="postcode"
-                  :error-messages="errors.collect('postcode')"
-                  label="Postcode"
+                  data-vv-name="postal_code"
+                  :error-messages="errors.collect('postal_code')"
+                  label="Postal Code"
                 />
               </section>
             </v-flex>
