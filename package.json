@@ -18,12 +18,11 @@
   "dependencies": {
     "@nuxtjs/auth": "^4.8.1",
     "@nuxtjs/axios": "^5.5.4",
-    "@nuxtjs/vuetify": "0.5.5",
+    "@nuxtjs/vuetify": "^1.0.2",
     "lodash": "^4.17.13",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.8.1",
     "vee-validate": "^2.2.11",
-    "vee-validate-laravel": "^1.1.0",
-    "vuetify-dialog": "^0.3.6"
+    "vee-validate-laravel": "^1.1.0"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^0.0.1",

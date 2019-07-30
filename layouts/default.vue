@@ -1,11 +1,27 @@
 <template>
   <v-app light>
-    <transition name="page" mode="out-in">
-      <router-view />
-    </transition>
+    <AppBar :drawer="drawer" @toggleDrawer="drawer = !drawer" />
+    <v-content>
+      <v-container fluid>
+        <transition name="page" mode="out-in">
+          <nuxt />
+        </transition>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
 <script>
-export default {}
+import AppBar from '~/components/AppBar.vue'
+
+export default {
+  components: {
+    AppBar
+  },
+  data() {
+    return {
+      drawer: false
+    }
+  }
+}
 </script>

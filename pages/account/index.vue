@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid>
+  <v-layout>
     Account
-  </v-container>
+  </v-layout>
 </template>
 <script>
 export default {}

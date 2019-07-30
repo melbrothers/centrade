@@ -1,13 +1,13 @@
 <template>
-  <v-container fluid>
-    <header>
+  <v-layout>
+    <section>
       <h1 class="text-xs-center display-1 my-2">
         Personal Info
       </h1>
       <h2 class="subheading text-xs-center my-3">
         Basic info, like your name and photo, that you use on centrade services
       </h2>
-    </header>
+    </section>
     <section>
       <article>
         <form @submit.prevent="updateProfile">
@@ -169,7 +169,7 @@
         </form>
       </article>
     </section>
-  </v-container>
+  </v-layout>
 </template>
 <script>
 export default {

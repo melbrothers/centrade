@@ -1,9 +1,9 @@
 <template>
-  <v-toolbar fixed app dark clipped-left color="#384596">
-    <v-toolbar-side-icon v-if="$auth.loggedIn" />
+  <v-app-bar fixed app dark clipped-left color="#384596">
+    <v-app-bar-nav-icon v-if="$auth.loggedIn" />
     <v-toolbar-title>
       <nuxt-link to="/">
-        <v-img src="/images/logo.png" min-width="120" />
+        <v-img src="/images/logo.png" width="120" />
       </nuxt-link>
     </v-toolbar-title>
     <v-spacer />
@@ -16,14 +16,16 @@
         :nudge-bottom="10"
         transition="scale-transition"
       >
-        <v-btn slot="activator" flat>
-          <v-icon left>
-            person
-          </v-icon>
-          {{ $auth.user.name }}
-        </v-btn>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" text v-on="on">
+            <v-icon left>
+              person
+            </v-icon>
+            {{ $auth.user.name }}
+          </v-btn>
+        </template>
         <v-list class="pa-0">
-          <v-list-tile
+          <v-list-item
             v-for="(item, index) in account_items"
             :key="index"
             ripple="ripple"
@@ -32,13 +34,13 @@
             rel="noopener"
             @click="accountMenuItemClicked(item.action)"
           >
-            <v-list-tile-action v-if="item.icon">
+            <v-list-item-action>
               <v-icon>{{ item.icon }}</v-icon>
-            </v-list-tile-action>
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
+            </v-list-item-action>
+            <v-list-item-title>
+              {{ item.title }}
+            </v-list-item-title>
+          </v-list-item>
         </v-list>
       </v-menu>
     </template>
@@ -52,7 +54,7 @@
         {{ 'login' }}
       </v-btn>
     </template>
-  </v-toolbar>
+  </v-app-bar>
 </template>
 
 <script>

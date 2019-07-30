@@ -46,8 +46,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/eslint-module',
-    '@nuxtjs/auth',
-    'vuetify-dialog/nuxt'
+    '@nuxtjs/auth'
   ],
   /*
    ** Axios module configuration
