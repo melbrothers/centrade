@@ -248,7 +248,7 @@
               Sign up today to access the biggest range of eletrical wholesalers
               and products within Australia.
             </p>
-            <v-btn class="signup-btn mt-4" color="primary" @click="login">
+            <v-btn class="signup-btn mt-4" color="primary">
               Sign up
             </v-btn>
           </v-flex>

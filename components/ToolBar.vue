@@ -1,9 +1,9 @@
 <template>
   <v-toolbar fixed app dark clipped-left color="#384596">
-    <v-toolbar-side-icon v-if="$auth.loggedIn" @click.stop="toggleDrawer" />
+    <v-toolbar-side-icon v-if="$auth.loggedIn" />
     <v-toolbar-title>
-      <nuxt-link to="/" class="white--text">
-        <img src="/images/logo.png" height="50" />
+      <nuxt-link to="/">
+        <v-img src="/images/logo.png" min-width="120" />
       </nuxt-link>
     </v-toolbar-title>
     <v-spacer />
