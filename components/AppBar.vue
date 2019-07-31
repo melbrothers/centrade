@@ -47,10 +47,10 @@
 
     <!-- Guest -->
     <template v-else>
-      <v-btn flat to="/register">
+      <v-btn text to="/register">
         {{ 'Register' }}
       </v-btn>
-      <v-btn flat to="/login">
+      <v-btn text to="/login">
         {{ 'login' }}
       </v-btn>
     </template>

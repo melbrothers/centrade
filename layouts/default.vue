@@ -1,14 +1,14 @@
 <template>
-  <v-app light>
-    <AppBar :drawer="drawer" @toggleDrawer="drawer = !drawer" />
-    <v-content>
-      <v-container fluid>
-        <transition name="page" mode="out-in">
+  <transition name="page" mode="out-in">
+    <v-app light>
+      <AppBar :drawer="drawer" @toggleDrawer="drawer = !drawer" />
+      <v-content>
+        <v-container fluid>
           <nuxt />
-        </transition>
-      </v-container>
-    </v-content>
-  </v-app>
+        </v-container>
+      </v-content>
+    </v-app>
+  </transition>
 </template>
 
 <script>

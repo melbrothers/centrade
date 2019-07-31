@@ -39,13 +39,15 @@ export default {
    */
   plugins: [{ src: '~/plugins/vee-validate.js', ssr: true }],
   /*
+   ** Nuxt.js dev-modules
+   */
+  devModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
+  /*
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/vuetify',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/eslint-module',
     '@nuxtjs/auth'
   ],
   /*
