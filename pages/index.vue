@@ -47,7 +47,7 @@
           </div>
         </v-flex>
       </v-layout>
-      <v-layout row text-xs-center class="grey lighten-3 ma-4">
+      <v-layout row text-xs-center class="grey lighten-3">
         <v-flex xs12 align-self-center>
           <div class="text-center pa-4">
             <h1 class="display-1 font-weight-bold grey--text text-darken-4">
@@ -58,7 +58,7 @@
           </div>
         </v-flex>
       </v-layout>
-      <v-layout class="intro-box blue lighten-1 ma-4">
+      <v-layout class="intro-box blue lighten-1">
         <v-flex md8 align-self-center>
           <div class="pa-4">
             <h1 class="white--text display-2 font-weight-bold">
@@ -74,7 +74,7 @@
           <v-img src="/images/comEl.png" alt="compare image" />
         </v-flex>
       </v-layout>
-      <v-layout row class="intro-box cyan lighten-2 ma-4">
+      <v-layout class="intro-box cyan lighten-2">
         <v-flex md8 align-self-center>
           <div class="pa-4">
             <h1 class="white--text display-2 font-weight-bold">
@@ -91,7 +91,7 @@
           <v-img src="/images/pig.png" alt="pig" />
         </v-flex>
       </v-layout>
-      <v-layout row justify-center class="intro-box green darken-3 ma-4">
+      <v-layout justify-center class="intro-box green darken-3">
         <v-flex md8 align-self-center>
           <div class="pa-4">
             <h1 class="white--text display-2 font-weight-bold">
@@ -107,7 +107,7 @@
           <v-img src="/images/bid.png" alt="bid image" />
         </v-flex>
       </v-layout>
-      <v-layout row justify-center class="intro-box orange darken-4 ma-4">
+      <v-layout justify-center class="intro-box orange darken-4">
         <v-flex md8 align-self-center>
           <div class="pa-4">
             <h1 class="white--text display-2 font-weight-bold">
@@ -125,7 +125,7 @@
           <v-img src="/images/orderMGM.png" alt="order image" />
         </v-flex>
       </v-layout>
-      <v-layout row justify-center class="intro-box green lighten-2 ma-4">
+      <v-layout justify-center class="intro-box green lighten-2">
         <v-flex md8 align-self-center>
           <div class="pa-4">
             <h1 class="white--text display-2 font-weight-bold">
@@ -145,7 +145,7 @@
       <h1 class="ma-2 display-2 font-weight-bold">
         We differ from other services
       </h1>
-      <v-layout row wrap>
+      <v-layout wrap>
         <v-flex md6 xs12 sm6 d-flex class="my-1">
           <v-card class="d-flex">
             <v-layout row wrap>
@@ -182,7 +182,7 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <v-layout row wrap>
+      <v-layout wrap>
         <v-flex md6 xs12 sm6 d-flex class="my-1">
           <v-card class="d-flex">
             <v-layout row wrap>
@@ -215,7 +215,7 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <v-layout row wrap>
+      <v-layout wrap>
         <v-flex md6 xs12 d-flex class="my-1">
           <v-card class="d-flex">
             <v-layout row wrap>
@@ -234,7 +234,7 @@
           </v-card>
         </v-flex>
       </v-layout>
-      <v-layout row wrap>
+      <v-layout wrap>
         <v-flex class="blue darken-4 white--text py-2 px-5" md7 xs12>
           <h1 class="display-3 font-weight-bold">
             Be a part of the
