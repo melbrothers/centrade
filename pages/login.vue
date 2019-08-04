@@ -1,6 +1,6 @@
 <template>
-  <v-layout class="pa-0" row wrap align-center justify-center>
-    <v-flex xs4>
+  <v-layout align-center justify-center>
+    <v-flex xs12 lg4>
       <Login />
     </v-flex>
   </v-layout>

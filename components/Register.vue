@@ -2,7 +2,7 @@
   <form @submit.prevent="register">
     <v-card class="elevation-12">
       <v-toolbar dark color="primary">
-        <v-toolbar-title>Register Form</v-toolbar-title>
+        <v-toolbar-title>Register</v-toolbar-title>
         <v-spacer />
       </v-toolbar>
       <v-card-text>
