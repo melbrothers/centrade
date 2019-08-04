@@ -71,8 +71,8 @@ export default {
       abn: '',
       businessName: '',
       email: '',
-      password: 'secretsecret',
-      passwordConfirmation: 'secretsecret'
+      password: '',
+      passwordConfirmation: ''
     }
   },
   methods: {
