@@ -235,7 +235,12 @@
         </v-flex>
       </v-layout>
       <v-layout wrap>
-        <v-flex class="blue darken-4 white--text py-2 px-5" md7 xs12>
+        <v-flex
+          class="blue darken-4 white--text py-2 px-5"
+          md7
+          xs12
+          align-self-center
+        >
           <h1 class="display-3 font-weight-bold">
             Be a part of the
             <span>future</span>
@@ -317,6 +322,8 @@ export default {
   font-weight: bold;
   font-size: 1.2rem;
   text-transform: none;
+  display: flex;
+  margin: auto;
 }
 
 .responsive-img {
