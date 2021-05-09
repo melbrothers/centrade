@@ -19,7 +19,7 @@
     "@nuxtjs/auth": "^4.8.1",
     "@nuxtjs/axios": "^5.5.4",
     "@nuxtjs/vuetify": "^1.0.2",
-    "lodash": "^4.17.13",
+    "lodash": "^4.17.21",
     "nuxt": "^2.8.1",
     "vee-validate": "^2.2.11",
     "vee-validate-laravel": "^1.1.0"
